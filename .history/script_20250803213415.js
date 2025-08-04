@@ -171,7 +171,7 @@ svg.append("text")
 g.append("text")
     .attr("class", "x axis-label")
     .attr("x", width / 2)
-    .attr("y", height + 100)
+    .attr("y", height + 45)
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Wealth Class");
