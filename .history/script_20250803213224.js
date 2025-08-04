@@ -168,23 +168,26 @@ svg.append("text")
 
         g.append("g").call(d3.axisLeft(y));
 
+        // Add X axis label (Year)
 g.append("text")
     .attr("class", "x axis-label")
     .attr("x", width / 2)
-    .attr("y", height + 45)
+    .attr("y", height + 45)  // a bit below the x-axis
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Wealth Class");
 
+// Add Y axis label (Percentage)
 g.append("text")
     .attr("class", "y axis-label")
     .attr("transform", "rotate(-90)")
     .attr("x", -height / 2)
-    .attr("y", -35) 
+    .attr("y", -35)  // left of y-axis
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Percentage");
 
+// Add chart title
 svg.append("text")
     .attr("x", (width + margin.left + margin.right) / 2)
     .attr("y", margin.top / 1.5)
@@ -250,7 +253,7 @@ svg.append("text")
 g.append("text")
     .attr("class", "x axis-label")
     .attr("x", width / 2)
-    .attr("y", height + 45)
+    .attr("y", height + 45)  // a bit below the x-axis
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Year");
@@ -259,7 +262,7 @@ g.append("text")
     .attr("class", "y axis-label")
     .attr("transform", "rotate(-90)")
     .attr("x", -height / 2)
-    .attr("y", -35)
+    .attr("y", -35)  // left of y-axis
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Percentage");

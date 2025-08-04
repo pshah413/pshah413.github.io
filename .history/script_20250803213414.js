@@ -259,7 +259,7 @@ g.append("text")
     .attr("class", "y axis-label")
     .attr("transform", "rotate(-90)")
     .attr("x", -height / 2)
-    .attr("y", -35)
+    .attr("y", -35)  // left of y-axis
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Percentage");
