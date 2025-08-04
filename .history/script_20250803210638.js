@@ -20,6 +20,7 @@ async function init() {
         InternetPenetration: +d.InternetPenetration
     }));
 
+    // Populate the dropdown menu with country options
     const countries = Array.from(new Set(countryData.map(d => d.Country)));
     const countrySelect = d3.select("#country-select");
     countrySelect.selectAll("option")
@@ -28,6 +29,7 @@ async function init() {
         .attr("value", d => d)
         .text(d => d);
 
+    // Button listeners
     document.getElementById('next').addEventListener('click', () => {
         if (currentScene < scenes.length - 1) {
             d3.select(scenes[currentScene]).classed('active', false);
@@ -99,9 +101,9 @@ async function init() {
             .attr("stroke-width", 2)
             .attr("d", line);
 
-        
-        const tmpData = data.find(d => d.Year === 2020);
-        if (tmpData) {
+        // Optional annotation for COVID-19
+        const covidData = data.find(d => d.Year === 2020);
+        if (covidData) {
             g.append("line")
                 .attr("x1", x(new Date(2020, 0, 1)))
                 .attr("x2", x(new Date(2020, 0, 1)))
@@ -198,5 +200,6 @@ async function init() {
             .attr("d", line);
     }
 
+    // Initial scene render
     updateChartForScene(currentScene);
 }

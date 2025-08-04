@@ -20,6 +20,7 @@ async function init() {
         InternetPenetration: +d.InternetPenetration
     }));
 
+    // Populate the dropdown menu with country options
     const countries = Array.from(new Set(countryData.map(d => d.Country)));
     const countrySelect = d3.select("#country-select");
     countrySelect.selectAll("option")
@@ -28,6 +29,7 @@ async function init() {
         .attr("value", d => d)
         .text(d => d);
 
+    // Button listeners
     document.getElementById('next').addEventListener('click', () => {
         if (currentScene < scenes.length - 1) {
             d3.select(scenes[currentScene]).classed('active', false);
@@ -62,54 +64,39 @@ async function init() {
     }
 
     function createLineChart(data) {
-        d3.select("#line-chart").selectAll("*").remove();
+        const area = d3.area()
+    .x(d => x(new Date(d.Year, 0, 1)))
+    .y0(height)
+    .y1(d => y(d.InternetPenetration));
 
-        const svg = d3.select("#line-chart").append("svg")
-            .attr("width", 800)
-            .attr("height", 600);
+g.append("path")
+    .datum(data)
+    .attr("fill", "rgba(0, 128, 128, 0.2)")  // teal transparent fill
+    .attr("d", area);
 
-        const margin = { top: 20, right: 30, bottom: 60, left: 50 };
-        const width = svg.attr("width") - margin.left - margin.right;
-        const height = svg.attr("height") - margin.top - margin.bottom;
+// Update line style: thicker, rounded line caps
+g.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "teal")
+    .attr("stroke-width", 4)
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("d", line);
 
-        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
-
-        const x = d3.scaleTime()
-            .domain(d3.extent(data, d => new Date(d.Year, 0, 1)))
-            .range([0, width]);
-
-        const y = d3.scaleLinear()
-            .domain([0, d3.max(data, d => d.InternetPenetration)])
-            .range([height, 0]);
-
-        const line = d3.line()
-            .x(d => x(new Date(d.Year, 0, 1)))
-            .y(d => y(d.InternetPenetration));
-
-        g.append("g")
-            .attr("transform", `translate(0,${height})`)
-            .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%Y")));
-
-        g.append("g").call(d3.axisLeft(y));
-
-        g.append("path")
-            .datum(data)
-            .attr("fill", "none")
-            .attr("stroke", "teal")
-            .attr("stroke-width", 2)
-            .attr("d", line);
-
-        
-        const tmpData = data.find(d => d.Year === 2020);
-        if (tmpData) {
-            g.append("line")
-                .attr("x1", x(new Date(2020, 0, 1)))
-                .attr("x2", x(new Date(2020, 0, 1)))
-                .attr("y1", 0)
-                .attr("y2", height)
-                .attr("stroke", "red")
-                .attr("stroke-dasharray", "4");
-        }
+// Make annotation line more prominent and softer
+const covidData = data.find(d => d.Year === 2020);
+if (covidData) {
+    g.append("line")
+        .attr("x1", x(new Date(2020, 0, 1)))
+        .attr("x2", x(new Date(2020, 0, 1)))
+        .attr("y1", 0)
+        .attr("y2", height)
+        .attr("stroke", "#d62728")  // bright red
+        .attr("stroke-width", 3)
+        .attr("stroke-dasharray", "8 4")
+        .attr("opacity", 0.8);
+}
     }
 
     function createRegionChart(data) {
@@ -198,5 +185,6 @@ async function init() {
             .attr("d", line);
     }
 
+    // Initial scene render
     updateChartForScene(currentScene);
 }

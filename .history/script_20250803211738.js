@@ -28,6 +28,7 @@ async function init() {
         .attr("value", d => d)
         .text(d => d);
 
+    // Button listeners
     document.getElementById('next').addEventListener('click', () => {
         if (currentScene < scenes.length - 1) {
             d3.select(scenes[currentScene]).classed('active', false);

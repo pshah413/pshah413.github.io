@@ -20,6 +20,7 @@ async function init() {
         InternetPenetration: +d.InternetPenetration
     }));
 
+    // Populate the dropdown menu with country options
     const countries = Array.from(new Set(countryData.map(d => d.Country)));
     const countrySelect = d3.select("#country-select");
     countrySelect.selectAll("option")
@@ -28,6 +29,7 @@ async function init() {
         .attr("value", d => d)
         .text(d => d);
 
+    // Button listeners
     document.getElementById('next').addEventListener('click', () => {
         if (currentScene < scenes.length - 1) {
             d3.select(scenes[currentScene]).classed('active', false);
