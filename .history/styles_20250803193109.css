@@ -1,0 +1,106 @@
+/* Container Styles */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Button Container Styles */
+.button-container {
+    width: 80%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Scene Styles */
+.scene {
+    display: none;
+}
+
+.active {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    align-items: start;
+}
+
+/* Chart Container Styles */
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Text Container Styles */
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* SVG Styles */
+svg {
+    border: 1px solid #ccc;
+}
+
+/* Dropdown Styles */
+#country-select {
+    margin: 10px 0;
+}
+
+/* Button Styles */
+button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Header Styles */
+h1 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Axis Styles */
+.axis text {
+    font-size: 12px;
+}
+
+.axis path, .axis line {
+    shape-rendering: crispEdges;
+}
+
+/* Line Styles */
+.line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5;
+}
+
+/* Annotation Styles */
+.annotation-group text {
+    font-size: 14px;
+    fill: #333;
+}
+
+
+.axis path {
+    stroke: #ddd;
+}

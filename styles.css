@@ -1,0 +1,129 @@
+/* Global Styles */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    color: #2c3e50;
+}
+
+/* Header */
+h1 {
+    text-align: left;
+    padding: 30px 40px 10px 40px;
+    font-size: 36px;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0 40px 20px 40px;
+    gap: 12px;
+}
+
+/* Button Styles */
+button {
+    background-color: #1e88e5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #1565c0;
+}
+
+/* Scene Wrapper */
+.scene {
+    display: none;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 40px 40px 40px;
+}
+
+/* Chart Container */
+.chart-container {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* Text Container (Bottom) */
+.text-container {
+    background-color: #ffffff;
+    border-left: 6px solid #1e88e5;
+    padding: 24px 30px;
+    border-radius: 0 12px 12px 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Headings inside .text-container */
+.text-container h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #1e88e5;
+}
+
+/* SVG Charts */
+svg {
+    background-color: #fefefe;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+/* Dropdown Styles */
+#country-select {
+    margin-top: 16px;
+    padding: 10px 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #fff;
+}
+
+/* Axis and Line Styles */
+.axis text {
+    font-size: 13px;
+    fill: #444;
+}
+
+.axis path, .axis line {
+    stroke: #e0e0e0;
+    shape-rendering: crispEdges;
+}
+
+.line {
+    fill: none;
+    stroke: #ff7f50;
+    stroke-width: 2.5;
+}
+
+/* Annotation Styles */
+.annotation-group text {
+    font-size: 14px;
+    fill: #2c3e50;
+    font-weight: 500;
+}
